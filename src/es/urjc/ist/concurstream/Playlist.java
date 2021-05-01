@@ -11,7 +11,10 @@ public class Playlist
 	//El usuario ira a�adiendo peliculas o series a su playlist pero esto lo he implementado en la clase Usuario, aqui se le ofrece un metodo addPelicula o addSerie
 	//En esta clase, en Playlist, se ofrecen dos metodos para actualizar la informacion de la ultima reproduccion que son addLast_Rep_Pelicula y addLast_Rep_Serie
 	public List<String> peliculas;
-	//Constructor por defecto en el que se crean las listas de peliculas y series vacias
+	//Constructor por defecto en el que se crean las listas de peliculas
+	
+	
+	//Clase obtenida de mi practica 1 la cual he resumido omitiendo los elementos que no usamos en esta practica.
 	public Playlist() 
 	{
 		this.peliculas = new ArrayList<String>();

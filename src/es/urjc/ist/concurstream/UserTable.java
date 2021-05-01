@@ -5,9 +5,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 public class UserTable implements Serializable {
-private ConcurrentHashMap<String, String> schedule;
+private ConcurrentHashMap<String, String> schedule; //Mapa donde se reflejan los usuarios y las playlist a las que estan vinculados
 
-public UserTable()
+public UserTable()//Constructor por defecto de la base de datos de los clientes
 {
     this.schedule = new ConcurrentHashMap<>();   
     

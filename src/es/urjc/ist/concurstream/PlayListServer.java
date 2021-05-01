@@ -26,7 +26,7 @@ import java.util.Enumeration;
  */
 public class PlayListServer {
 	
-	private static final int NCLIENTES = 1;
+	private static final int NCLIENTES = 5;
 	
 	private int port; // Puerto al que se ata el servidor
 	private ServerSocket serverSocket; // Socket del servidor
@@ -222,9 +222,12 @@ public class PlayListServer {
         		System.out.println("La tarea no terminó.");
         	}
         }
+        
+        //Siempre que el servidor termine, se va a imprimir en su consola la base de datos de los usuarios, con sus nombres y a que playlist están vinculados y ademas se imprimira tambien la base de datos de las listas que vinculan los nombres de las playlist con el objeto en si de la Clase Playlist que he instanciado
         Enumeration<String> enu_user = bd.getSchedule().keys();
         Enumeration<String> enu_playlist = bd.getSchedule().elements();
 		System.out.println("Playlist Registradas:\n");
+		//Tanto las claves como los valores son devueltos mediante variables de tipo Enumeration
 		for(int i=0; i<bd.getSchedule().size(); i++)
 		{
 			System.out.println("\t -Usuario: "+ enu_user.nextElement() + " -Playlist: "+enu_playlist.nextElement());
@@ -232,6 +235,7 @@ public class PlayListServer {
 		
 		
 		Enumeration<String> enu_lista= playlists.getSchedule().keys();
+		
         Enumeration<Playlist> enu_playlists = playlists.getSchedule().elements();
 		for(int i=0; i<playlists.getSchedule().size(); i++)
 		{
@@ -239,7 +243,7 @@ public class PlayListServer {
 			System.out.println("\n\n\t - "+ nombre_lista);
 			for(int j=0; j<playlists.getSchedule().get(nombre_lista).getPeliculas().size(); j++)
 			{
-				System.out.println("\t\t *Pelicula "+(j+1)+": "+playlists.getSchedule().get(nombre_lista).getPeliculas().get(j));
+				System.out.println("\t\t * "+playlists.getSchedule().get(nombre_lista).getPeliculas().get(j));
 			}
 		}
         System.err.println("Finaliza el servidor.");

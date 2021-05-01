@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ConcurrentPlayList implements Serializable  {
 private ConcurrentHashMap<String, Playlist> schedule;
 
-public ConcurrentPlayList()
+public ConcurrentPlayList()//Constructor por defecto que genera 2 playlist, ConcurrentPlayList0/1 cada una con sus respectivas listas de peliculas.
 {
     this.schedule = new ConcurrentHashMap<>();   
     
@@ -27,7 +27,8 @@ public ConcurrentPlayList()
 }
 
 
-public void añadirConcurrentPlaylist(String playlist, Playlist lista)
+public void añadirConcurrentPlaylist(String playlist, Playlist lista)//Añadir una nueva fila a la base de datos
+//Si la playlist ya está registrada se informará de ello, si no, se reflejará en el mapa
 {
 	if(this.schedule.get(playlist) != null)
 	{
@@ -36,14 +37,14 @@ public void añadirConcurrentPlaylist(String playlist, Playlist lista)
 	else
 		this.schedule.put(playlist, lista); 
 }
-public void añadirPelicula(String pelicula, String playlist)
+public void añadirPelicula(String pelicula, String playlist)//Añadir pelicula a una playlist del mapa de la base de datos
 {
 	Playlist lista = this.schedule.get(playlist);
 	lista.getPeliculas().add(pelicula);
 	this.schedule.replace(playlist,lista);
 	
 }
-public void eliminarPelicula(int seleccion, String playlist)
+public void eliminarPelicula(int seleccion, String playlist)//Eliminar pelicula de una playlist del mapa de la base de datos
 {
 	Playlist lista = this.schedule.get(playlist);
 	lista.getPeliculas().remove(seleccion-1);
